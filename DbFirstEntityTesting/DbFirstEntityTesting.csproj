@@ -53,6 +53,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +65,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\DbFirstEntityTesting.Data.Customer.datasource" />
+    <None Include="Properties\DataSources\DbFirstEntityTesting.Data.CustomerAndMoviesRented.datasource" />
+    <None Include="Properties\DataSources\DbFirstEntityTesting.Data.RentedMovies.datasource" />
+    <None Include="Properties\DataSources\DbFirstEntityTesting.Data.VBMoviesFullDataEntities.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -74,6 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DbFirstEntityTesting.Data\DbFirstEntityTesting.Data.csproj">
+      <Project>{c7a156d2-1000-4ab8-ad19-1074546da429}</Project>
+      <Name>DbFirstEntityTesting.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
