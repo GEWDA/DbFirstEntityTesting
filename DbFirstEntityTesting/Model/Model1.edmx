@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="VBMoviesFullDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Movies.mdfModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustID" />
@@ -31,7 +31,7 @@
           <Property Name="IsDeleted" Type="binary" MaxLength="1" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\JUDAH\DOCUMENTS\VISUAL STUDIO 2017\PROJECTS\DBFIRSTENTITYTESTING\DBFIRSTENTITYTESTING.DATA\VBMOVIESFULLDATA.MDF.dbo.RentedMovies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'Movies.mdf.dbo.RentedMovies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="RentedMovies">
           <Key>
             <PropertyRef Name="RMID" />
@@ -53,7 +53,7 @@ warning 6002: The table/view 'C:\USERS\JUDAH\DOCUMENTS\VISUAL STUDIO 2017\PROJEC
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\JUDAH\DOCUMENTS\VISUAL STUDIO 2017\PROJECTS\DBFIRSTENTITYTESTING\DBFIRSTENTITYTESTING.DATA\VBMOVIESFULLDATA.MDF.dbo.CustomerAndMoviesRented' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'Movies.mdf.dbo.CustomerAndMoviesRented' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CustomerAndMoviesRented">
           <Key>
             <PropertyRef Name="RMID" />
@@ -91,7 +91,7 @@ warning 6002: The table/view 'C:\USERS\JUDAH\DOCUMENTS\VISUAL STUDIO 2017\PROJEC
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="VBMoviesFullDataModelStoreContainer">
+        <EntityContainer Name="MoviesmdfModelStoreContainer">
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -129,7 +129,7 @@ warning 6002: The table/view 'C:\USERS\JUDAH\DOCUMENTS\VISUAL STUDIO 2017\PROJEC
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="VBMoviesFullDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Movies.mdfModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustID" />
@@ -216,7 +216,7 @@ warning 6002: The table/view 'C:\USERS\JUDAH\DOCUMENTS\VISUAL STUDIO 2017\PROJEC
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="VBMoviesFullDataEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Customer" EntityType="Self.Customer" />
           <EntitySet Name="Movies" EntityType="Self.Movies" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -236,9 +236,9 @@ warning 6002: The table/view 'C:\USERS\JUDAH\DOCUMENTS\VISUAL STUDIO 2017\PROJEC
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="VBMoviesFullDataModelStoreContainer" CdmEntityContainer="VBMoviesFullDataEntities">
+        <EntityContainerMapping StorageEntityContainer="MoviesmdfModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Customer">
-            <EntityTypeMapping TypeName="VBMoviesFullDataModel.Customer">
+            <EntityTypeMapping TypeName="Movies.mdfModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="CustID" ColumnName="CustID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -250,7 +250,7 @@ warning 6002: The table/view 'C:\USERS\JUDAH\DOCUMENTS\VISUAL STUDIO 2017\PROJEC
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Movies">
-            <EntityTypeMapping TypeName="VBMoviesFullDataModel.Movies">
+            <EntityTypeMapping TypeName="Movies.mdfModel.Movies">
               <MappingFragment StoreEntitySet="Movies">
                 <ScalarProperty Name="MovieID" ColumnName="MovieID" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
@@ -265,7 +265,7 @@ warning 6002: The table/view 'C:\USERS\JUDAH\DOCUMENTS\VISUAL STUDIO 2017\PROJEC
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="VBMoviesFullDataModel.sysdiagrams">
+            <EntityTypeMapping TypeName="Movies.mdfModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -276,7 +276,7 @@ warning 6002: The table/view 'C:\USERS\JUDAH\DOCUMENTS\VISUAL STUDIO 2017\PROJEC
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RentedMovies">
-            <EntityTypeMapping TypeName="VBMoviesFullDataModel.RentedMovies">
+            <EntityTypeMapping TypeName="Movies.mdfModel.RentedMovies">
               <MappingFragment StoreEntitySet="RentedMovies">
                 <ScalarProperty Name="RMID" ColumnName="RMID" />
                 <ScalarProperty Name="MovieIDFK" ColumnName="MovieIDFK" />
@@ -287,7 +287,7 @@ warning 6002: The table/view 'C:\USERS\JUDAH\DOCUMENTS\VISUAL STUDIO 2017\PROJEC
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustomerAndMoviesRented">
-            <EntityTypeMapping TypeName="VBMoviesFullDataModel.CustomerAndMoviesRented">
+            <EntityTypeMapping TypeName="Movies.mdfModel.CustomerAndMoviesRented">
               <MappingFragment StoreEntitySet="CustomerAndMoviesRented">
                 <ScalarProperty Name="RMID" ColumnName="RMID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />

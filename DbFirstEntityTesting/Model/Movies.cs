@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DbFirstEntityTesting.Data
+namespace DbFirstEntityTesting.Model
 {
     using System;
     using System.Collections.Generic;

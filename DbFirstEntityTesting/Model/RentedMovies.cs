@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DbFirstEntityTesting.Data
+namespace DbFirstEntityTesting.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerAndMoviesRented
+    public partial class RentedMovies
     {
         public int RMID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Address { get; set; }
-        public string Title { get; set; }
-        public Nullable<decimal> Rental_Cost { get; set; }
+        public Nullable<int> MovieIDFK { get; set; }
+        public Nullable<int> CustIDFK { get; set; }
         public Nullable<System.DateTime> DateRented { get; set; }
         public Nullable<System.DateTime> DateReturned { get; set; }
+    
+        public virtual Customer Customer { get; set; }
+        public virtual Movies Movies { get; set; }
     }
 }

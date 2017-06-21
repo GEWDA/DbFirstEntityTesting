@@ -163,10 +163,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1220, 559);
             this.dataGridView1.TabIndex = 0;
             // 
-            // customerAndMoviesRentedBindingSource
-            // 
-            this.customerAndMoviesRentedBindingSource.DataSource = typeof(DbFirstEntityTesting.Data.CustomerAndMoviesRented);
-            // 
             // rMIDDataGridViewTextBoxColumn
             // 
             this.rMIDDataGridViewTextBoxColumn.DataPropertyName = "RMID";
@@ -235,10 +231,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(1220, 559);
             this.dataGridView2.TabIndex = 0;
             // 
-            // rentedMoviesBindingSource
-            // 
-            this.rentedMoviesBindingSource.DataSource = typeof(DbFirstEntityTesting.Data.RentedMovies);
-            // 
             // rMIDDataGridViewTextBoxColumn1
             // 
             this.rMIDDataGridViewTextBoxColumn1.DataPropertyName = "RMID";
@@ -300,10 +292,6 @@
             this.dataGridView3.RowTemplate.Height = 24;
             this.dataGridView3.Size = new System.Drawing.Size(1220, 556);
             this.dataGridView3.TabIndex = 0;
-            // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(DbFirstEntityTesting.Data.Customer);
             // 
             // custIDDataGridViewTextBoxColumn
             // 
@@ -367,10 +355,6 @@
             this.dataGridView4.RowTemplate.Height = 24;
             this.dataGridView4.Size = new System.Drawing.Size(1217, 556);
             this.dataGridView4.TabIndex = 0;
-            // 
-            // vBMoviesFullDataEntitiesBindingSource
-            // 
-            this.vBMoviesFullDataEntitiesBindingSource.DataSource = typeof(DbFirstEntityTesting.Data.VBMoviesFullDataEntities);
             // 
             // customerDataGridViewTextBoxColumn1
             // 

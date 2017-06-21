@@ -49,62 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs">
-      <DependentUpon>MovieDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CustomerAndMoviesRented.cs">
-      <DependentUpon>MovieDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MovieDbModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MovieDbModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MovieDbModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MovieDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MovieDbModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MovieDbModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Movies.cs">
-      <DependentUpon>MovieDbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RentedMovies.cs">
-      <DependentUpon>MovieDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>MovieDbModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="MovieDbModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MovieDbModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="MovieDbModel.edmx.diagram">
-      <DependentUpon>MovieDbModel.edmx</DependentUpon>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="MovieDbModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MovieDbModel.Context.cs</LastGenOutput>
-      <DependentUpon>MovieDbModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="MovieDbModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MovieDbModel.edmx</DependentUpon>
-      <LastGenOutput>MovieDbModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DbFirstEntityTesting.Data
+namespace DbFirstEntityTesting.Model
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class VBMoviesFullDataEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public VBMoviesFullDataEntities()
-            : base("name=VBMoviesFullDataEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
