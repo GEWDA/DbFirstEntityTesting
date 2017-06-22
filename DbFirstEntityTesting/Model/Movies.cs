@@ -28,7 +28,7 @@ namespace DbFirstEntityTesting.Model
         public string Copies { get; set; }
         public string Plot { get; set; }
         public string Genre { get; set; }
-        public byte[] IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RentedMovies> RentedMovies { get; set; }

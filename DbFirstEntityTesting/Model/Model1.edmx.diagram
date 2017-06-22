@@ -4,12 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ecb58b0d581f4c8ebcb7fcd806578d85" Name="Diagram1">
+      <Diagram DiagramId="6359016afa84411b927f46283af329fa" Name="Diagram1">
         <EntityTypeShape EntityType="Movies.mdfModel.Customer" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Movies.mdfModel.Movies" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Movies.mdfModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Movies.mdfModel.RentedMovies" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Movies.mdfModel.CustomerAndMoviesRented" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Movies.mdfModel.CustomerAndMoviesRented" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="Movies.mdfModel.FK_RentedMovies_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="Movies.mdfModel.FK_RentedMovies_Movies" ManuallyRouted="false" />
       </Diagram>

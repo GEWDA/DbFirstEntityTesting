@@ -27,7 +27,6 @@ namespace DbFirstEntityTesting.Model
     
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Movies> Movies { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<RentedMovies> RentedMovies { get; set; }
         public virtual DbSet<CustomerAndMoviesRented> CustomerAndMoviesRented { get; set; }
     }
