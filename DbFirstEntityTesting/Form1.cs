@@ -25,18 +25,14 @@ namespace DbFirstEntityTesting
         {
             using (var context = new Entities())
             {
-                var query = from c in context.Customer
-                    where (!c.IsDeleted)
-                    select new
-                    {
-                        c.CustID,
-                        c.FirstName,
-                        c.LastName,
-                        c.Address,
-                        c.Phone,
-                    };
-
-                dataGridCustomers.DataSource = query.ToList();
+                var record = (from c in context.Customer
+                    where (c.CustID.ToString() == lblCustID.Text)
+                    select c).First();
+                record.FirstName = txtFirstName.Text;
+                record.LastName = txtSurname.Text;
+                record.Address = txtAddress.Text;//todo:check for null and empty strings, check phone and rental cost are numbers
+                record.Phone = txtPhone.Text;
+                context.SaveChanges();
             }
         }
         private void UpdateMovie()
@@ -53,7 +49,6 @@ namespace DbFirstEntityTesting
                 record.Copies = txtCopies.Text;
                 record.Plot = txtPlot.Text;
                 record.Genre = txtGenre.Text;
-
                 context.SaveChanges();
             }
         }

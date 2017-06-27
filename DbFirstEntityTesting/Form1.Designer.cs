@@ -53,11 +53,11 @@
             this.lblCopies = new System.Windows.Forms.Label();
             this.txtGenre = new System.Windows.Forms.TextBox();
             this.lblGenre = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtSurname = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblSurname = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblCustID = new System.Windows.Forms.Label();
@@ -110,16 +110,16 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.lblCustID);
-            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.txtPhone);
             this.tabPage2.Controls.Add(this.dataGridCustomers);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.lblFirstName);
             this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.textBox5);
+            this.tabPage2.Controls.Add(this.txtSurname);
             this.tabPage2.Controls.Add(this.lblSurname);
-            this.tabPage2.Controls.Add(this.textBox6);
-            this.tabPage2.Controls.Add(this.textBox8);
+            this.tabPage2.Controls.Add(this.txtAddress);
+            this.tabPage2.Controls.Add(this.txtFirstName);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
@@ -336,14 +336,14 @@
             this.lblGenre.TabIndex = 15;
             this.lblGenre.Text = "Genre:";
             // 
-            // textBox2
+            // txtPhone
             // 
-            this.textBox2.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(212, 492);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(74, 20);
-            this.textBox2.TabIndex = 32;
+            this.txtPhone.Cursor = System.Windows.Forms.Cursors.No;
+            this.txtPhone.Enabled = false;
+            this.txtPhone.Location = new System.Drawing.Point(212, 492);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(74, 20);
+            this.txtPhone.TabIndex = 32;
             // 
             // label1
             // 
@@ -354,32 +354,32 @@
             this.label1.TabIndex = 31;
             this.label1.Text = "Phone:";
             // 
-            // textBox5
+            // txtSurname
             // 
-            this.textBox5.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(291, 465);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(92, 20);
-            this.textBox5.TabIndex = 26;
+            this.txtSurname.Cursor = System.Windows.Forms.Cursors.No;
+            this.txtSurname.Enabled = false;
+            this.txtSurname.Location = new System.Drawing.Point(291, 465);
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(92, 20);
+            this.txtSurname.TabIndex = 26;
             // 
-            // textBox6
+            // txtAddress
             // 
-            this.textBox6.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBox6.Enabled = false;
-            this.textBox6.Location = new System.Drawing.Point(72, 492);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(81, 20);
-            this.textBox6.TabIndex = 25;
+            this.txtAddress.Cursor = System.Windows.Forms.Cursors.No;
+            this.txtAddress.Enabled = false;
+            this.txtAddress.Location = new System.Drawing.Point(72, 492);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(81, 20);
+            this.txtAddress.TabIndex = 25;
             // 
-            // textBox8
+            // txtFirstName
             // 
-            this.textBox8.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBox8.Enabled = false;
-            this.textBox8.Location = new System.Drawing.Point(116, 465);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(103, 20);
-            this.textBox8.TabIndex = 23;
+            this.txtFirstName.Cursor = System.Windows.Forms.Cursors.No;
+            this.txtFirstName.Enabled = false;
+            this.txtFirstName.Location = new System.Drawing.Point(116, 465);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(103, 20);
+            this.txtFirstName.TabIndex = 23;
             // 
             // lblSurname
             // 
@@ -479,15 +479,15 @@
         private System.Windows.Forms.TextBox txtGenre;
         private System.Windows.Forms.Label lblGenre;
         private System.Windows.Forms.Label lblCustID;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.Label lblSurname;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.TextBox txtFirstName;
     }
 }
 
