@@ -21,6 +21,46 @@ namespace DbFirstEntityTesting
 
         }
 
+        private void UpdateCustomer()
+        {
+            using (var context = new Entities())
+            {
+                var query = from c in context.Customer
+                    where (!c.IsDeleted)
+                    select new
+                    {
+                        c.CustID,
+                        c.FirstName,
+                        c.LastName,
+                        c.Address,
+                        c.Phone,
+                    };
+
+                dataGridCustomers.DataSource = query.ToList();
+            }
+        }
+        private void UpdateMovie()
+        {
+            using (var context = new Entities())
+            {
+                var record = (from m in context.Movies
+                    where (m.MovieID.ToString()==lblMovieID.Text)
+                              select m).First();    //i will only be updating 1 record at a time, and two records can't have
+                record.Title = txtTitle.Text;       //the same ID, so I will select the first (and the only) record I find
+                record.Rating = txtRating.Text;
+                record.Year = txtYear.Text;
+                record.Rental_Cost = Convert.ToDecimal(txtRental_Cost.Text);
+                record.Copies = txtCopies.Text;
+                record.Plot = txtPlot.Text;
+                record.Genre = txtGenre.Text;
+
+                context.SaveChanges();
+            }
+        }
+
+
+
+        //METHODS
         private void LoadData()
         {
             LoadCustomers();
