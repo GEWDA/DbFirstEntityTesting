@@ -67,6 +67,10 @@
             this.btnUpdateMovies = new System.Windows.Forms.Button();
             this.btnCustDelete = new System.Windows.Forms.Button();
             this.btnMovDelete = new System.Windows.Forms.Button();
+            this.btnNewMovie = new System.Windows.Forms.Button();
+            this.btnRent = new System.Windows.Forms.Button();
+            this.btnNewCustomer = new System.Windows.Forms.Button();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tpRented.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRentedMovies)).BeginInit();
@@ -113,6 +117,7 @@
             // 
             // tpCustomers
             // 
+            this.tpCustomers.Controls.Add(this.btnNewCustomer);
             this.tpCustomers.Controls.Add(this.btnCustDelete);
             this.tpCustomers.Controls.Add(this.btnUpdateCustomer);
             this.tpCustomers.Controls.Add(this.lblCustID);
@@ -237,6 +242,8 @@
             // 
             // tpMovies
             // 
+            this.tpMovies.Controls.Add(this.btnRent);
+            this.tpMovies.Controls.Add(this.btnNewMovie);
             this.tpMovies.Controls.Add(this.btnMovDelete);
             this.tpMovies.Controls.Add(this.btnUpdateMovies);
             this.tpMovies.Controls.Add(this.lblMovieID);
@@ -420,6 +427,7 @@
             // 
             // tpUnreturned
             // 
+            this.tpUnreturned.Controls.Add(this.btnReturn);
             this.tpUnreturned.Controls.Add(this.dataGridUnreturned);
             this.tpUnreturned.Location = new System.Drawing.Point(4, 22);
             this.tpUnreturned.Margin = new System.Windows.Forms.Padding(2);
@@ -476,6 +484,43 @@
             this.btnMovDelete.Text = "Delete";
             this.btnMovDelete.UseVisualStyleBackColor = true;
             this.btnMovDelete.Click += new System.EventHandler(this.btnMovDelete_Click);
+            // 
+            // btnNewMovie
+            // 
+            this.btnNewMovie.Location = new System.Drawing.Point(768, 468);
+            this.btnNewMovie.Name = "btnNewMovie";
+            this.btnNewMovie.Size = new System.Drawing.Size(150, 23);
+            this.btnNewMovie.TabIndex = 36;
+            this.btnNewMovie.Text = "New Movie...";
+            this.btnNewMovie.UseVisualStyleBackColor = true;
+            // 
+            // btnRent
+            // 
+            this.btnRent.Location = new System.Drawing.Point(768, 495);
+            this.btnRent.Name = "btnRent";
+            this.btnRent.Size = new System.Drawing.Size(150, 23);
+            this.btnRent.TabIndex = 37;
+            this.btnRent.Text = "Rent Movie...";
+            this.btnRent.UseVisualStyleBackColor = true;
+            this.btnRent.Click += new System.EventHandler(this.btnRent_Click);
+            // 
+            // btnNewCustomer
+            // 
+            this.btnNewCustomer.Location = new System.Drawing.Point(566, 492);
+            this.btnNewCustomer.Name = "btnNewCustomer";
+            this.btnNewCustomer.Size = new System.Drawing.Size(150, 23);
+            this.btnNewCustomer.TabIndex = 38;
+            this.btnNewCustomer.Text = "New Customer...";
+            this.btnNewCustomer.UseVisualStyleBackColor = true;
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.Location = new System.Drawing.Point(768, 464);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(150, 23);
+            this.btnReturn.TabIndex = 39;
+            this.btnReturn.Text = "Return Movie";
+            this.btnReturn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -542,6 +587,10 @@
         private System.Windows.Forms.Button btnUpdateMovies;
         private System.Windows.Forms.Button btnCustDelete;
         private System.Windows.Forms.Button btnMovDelete;
+        private System.Windows.Forms.Button btnNewCustomer;
+        private System.Windows.Forms.Button btnRent;
+        private System.Windows.Forms.Button btnNewMovie;
+        private System.Windows.Forms.Button btnReturn;
     }
 }
 

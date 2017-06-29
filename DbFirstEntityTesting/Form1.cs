@@ -20,7 +20,9 @@ namespace DbFirstEntityTesting
             LoadData();
 
         }
-
+        public Form3 FormNewCustomer { get; set; }
+        public Form4 FormNewMovie { get; set; }
+        public DataGridViewCellCollection CurrentMovie { get; set; }
 
         //EVENTS
 
@@ -45,9 +47,10 @@ namespace DbFirstEntityTesting
                 txtTitle.Text = theRecord[2].Value.ToString();
                 txtYear.Text = theRecord[3].Value.ToString();
                 txtRental_Cost.Text = theRecord[4].Value.ToString();
-                txtCopies.Text = theRecord[0].Value.ToString();
-                txtPlot.Text = theRecord[1].Value.ToString();
-                txtGenre.Text = theRecord[2].Value.ToString();
+                txtCopies.Text = theRecord[5].Value.ToString();
+                txtPlot.Text = theRecord[6].Value.ToString();
+                txtGenre.Text = theRecord[7].Value.ToString();
+                CurrentMovie = theRecord;//for renting movie
             }
         }
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
@@ -103,12 +106,25 @@ namespace DbFirstEntityTesting
 
 
         //METHODS
+
+
+        private void CreateMovie()
+        {
+            
+        }
         private void LoadData()
         {
             LoadCustomers();
             LoadMovies();
             LoadRentedMovies();
             LoadUnreturned();
+            dataGridCustomers.Columns[0].Width=60;
+            dataGridMovies.Columns[0].Width = 60;
+            dataGridMovies.Columns[5].Width = 60;
+            dataGridRentedMovies.Columns[0].Width = 60;
+            dataGridRentedMovies.Columns[1].Width = 67;
+            dataGridRentedMovies.Columns[3].Width = 67;
+            dataGridUnreturned.Columns[0].Width = 60;
         }
         private void LoadCustomers()
         {
@@ -153,15 +169,15 @@ namespace DbFirstEntityTesting
         {
             using (var context = new Entities())
             {
-                var query = from r in context.CustomerAndMoviesRented
+                var query = from r in context.RentedMovies
                     select new
                     {
                         r.RMID,
-                        r.FirstName,
-                        r.LastName,
-                        r.Address,
-                        r.Title,
-                        r.Rental_Cost,
+                        r.MovieIDFK,
+                        r.Movies.Title,
+                        r.CustIDFK,
+                        r.Customer.FirstName,
+                        r.Customer.LastName,
                         r.DateRented,
                         r.DateReturned
                     };
@@ -265,7 +281,7 @@ namespace DbFirstEntityTesting
                 //context.SaveChanges();
             }
             LoadCustomers();
-        }
+        }//todo: uncomment context.SaveChanges()
         private void DeleteMovie()
         {
             using (var context = new Entities())
@@ -277,6 +293,15 @@ namespace DbFirstEntityTesting
                 //context.SaveChanges();
             }
             LoadMovies();
+        }//todo: uncomment context.SaveChanges()
+
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+            using (Form2 FormRent=new Form2(CurrentMovie))
+            {
+                FormRent.ShowDialog();                
+            }
+
         }
     }
 }
