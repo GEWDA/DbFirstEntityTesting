@@ -21,36 +21,40 @@ namespace DbFirstEntityTesting
 
         }
 
-        private void UpdateCustomer()
+
+        //EVENTS
+
+
+
+        private void btnUpdateCustomer_Click(object sender, EventArgs e)
         {
-            using (var context = new Entities())
+            if (txtSurname.Enabled)
             {
-                var record = (from c in context.Customer
-                    where (c.CustID.ToString() == lblCustID.Text)
-                    select c).First();
-                record.FirstName = txtFirstName.Text;
-                record.LastName = txtSurname.Text;
-                record.Address = txtAddress.Text;//todo:check for null and empty strings, check phone and rental cost are numbers
-                record.Phone = txtPhone.Text;
-                context.SaveChanges();
+                UpdateCustomer();
+                btnUpdateCustomer.Text = "Edit...";
             }
+            else { btnUpdateCustomer.Text="Update";}
+            foreach (var field in tpCustomers.Controls.OfType<TextBox>())
+            {
+                field.Enabled = !field.Enabled;
+                field.Cursor = field.Cursor == Cursors.No ? Cursors.IBeam : Cursors.No;
+            }
+            LoadCustomers();
         }
-        private void UpdateMovie()
+        private void btnUpdateMovies_Click(object sender, EventArgs e)
         {
-            using (var context = new Entities())
+            if (txtTitle.Enabled)
             {
-                var record = (from m in context.Movies
-                    where (m.MovieID.ToString()==lblMovieID.Text)
-                              select m).First();    //i will only be updating 1 record at a time, and two records can't have
-                record.Title = txtTitle.Text;       //the same ID, so I will select the first (and the only) record I find
-                record.Rating = txtRating.Text;
-                record.Year = txtYear.Text;
-                record.Rental_Cost = Convert.ToDecimal(txtRental_Cost.Text);
-                record.Copies = txtCopies.Text;
-                record.Plot = txtPlot.Text;
-                record.Genre = txtGenre.Text;
-                context.SaveChanges();
+                UpdateMovie();
+                btnUpdateMovies.Text = "Edit...";
             }
+            else { btnUpdateMovies.Text = "Update"; }
+            foreach (var field in tpMovies.Controls.OfType<TextBox>())
+            {
+                field.Enabled = !field.Enabled;
+                field.Cursor=field.Cursor==Cursors.No?Cursors.IBeam:Cursors.No;
+            }
+            LoadMovies();
         }
 
 
@@ -143,6 +147,61 @@ namespace DbFirstEntityTesting
                 dataGridUnreturned.DataSource = query.ToList();
             }
         }
+        private void UpdateCustomer()
+        {
+            try
+            {
+                Convert.ToInt16(txtPhone.Text);
+            }
+            catch
+            {
+                txtPhone.Text = null;
+            }
+            foreach (var theTextBox in tpCustomers.Controls.OfType<TextBox>())
+            {
+                if (string.IsNullOrEmpty(theTextBox.Text)){MessageBox.Show("Please fill in all fields appropriately");return;}
+            }
+            using (var context = new Entities())
+            {
+                var custRecord = (from c in context.Customer
+                    where (c.CustID.ToString() == lblCustID.Text)
+                    select c).First();
+                custRecord.FirstName = txtFirstName.Text;
+                custRecord.LastName = txtSurname.Text;
+                custRecord.Address = txtAddress.Text;
+                custRecord.Phone = txtPhone.Text;
+                //context.SaveChanges();
+            }
+        }//todo: uncomment context.SaveChanges()
+        private void UpdateMovie()
+        {
+            try
+            {
+                Convert.ToDecimal(txtRental_Cost.Text);
+            }
+            catch
+            {
+                txtRental_Cost.Text = null;
+            }
+            foreach (var theTextBox in tpMovies.Controls.OfType<TextBox>())
+            {
+                if (string.IsNullOrEmpty(theTextBox.Text)) { MessageBox.Show("Please fill in all fields appropriately"); return; }
+            }
+            using (var context = new Entities())
+            {
+                var movRecord = (from m in context.Movies
+                    where (m.MovieID.ToString()==lblMovieID.Text)
+                              select m).First();    //i will only be updating 1 record at a time, and two records can't have
+                movRecord.Title = txtTitle.Text;       //the same ID, so I will select the first (and the only) record I find
+                movRecord.Rating = txtRating.Text;
+                movRecord.Year = txtYear.Text;
+                movRecord.Rental_Cost = Convert.ToDecimal(txtRental_Cost.Text);
+                movRecord.Copies = txtCopies.Text;
+                movRecord.Plot = txtPlot.Text;
+                movRecord.Genre = txtGenre.Text;
+                //context.SaveChanges();
+            }
+        }//todo: uncomment context.SaveChanges()
 
 
 
