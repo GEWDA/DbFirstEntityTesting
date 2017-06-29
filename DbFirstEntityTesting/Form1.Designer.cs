@@ -65,6 +65,8 @@
             this.dataGridUnreturned = new System.Windows.Forms.DataGridView();
             this.btnUpdateCustomer = new System.Windows.Forms.Button();
             this.btnUpdateMovies = new System.Windows.Forms.Button();
+            this.btnCustDelete = new System.Windows.Forms.Button();
+            this.btnMovDelete = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tpRented.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRentedMovies)).BeginInit();
@@ -111,6 +113,7 @@
             // 
             // tpCustomers
             // 
+            this.tpCustomers.Controls.Add(this.btnCustDelete);
             this.tpCustomers.Controls.Add(this.btnUpdateCustomer);
             this.tpCustomers.Controls.Add(this.lblCustID);
             this.tpCustomers.Controls.Add(this.txtPhone);
@@ -140,7 +143,7 @@
             this.lblCustID.Name = "lblCustID";
             this.lblCustID.Size = new System.Drawing.Size(34, 14);
             this.lblCustID.TabIndex = 19;
-            this.lblCustID.Text = "4";
+            this.lblCustID.Text = "#";
             // 
             // txtPhone
             // 
@@ -158,6 +161,7 @@
             this.dataGridCustomers.Name = "dataGridCustomers";
             this.dataGridCustomers.Size = new System.Drawing.Size(908, 448);
             this.dataGridCustomers.TabIndex = 0;
+            this.dataGridCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_CellClick);
             // 
             // label1
             // 
@@ -233,6 +237,7 @@
             // 
             // tpMovies
             // 
+            this.tpMovies.Controls.Add(this.btnMovDelete);
             this.tpMovies.Controls.Add(this.btnUpdateMovies);
             this.tpMovies.Controls.Add(this.lblMovieID);
             this.tpMovies.Controls.Add(this.txtGenre);
@@ -267,7 +272,7 @@
             this.lblMovieID.Name = "lblMovieID";
             this.lblMovieID.Size = new System.Drawing.Size(34, 14);
             this.lblMovieID.TabIndex = 3;
-            this.lblMovieID.Text = "4";
+            this.lblMovieID.Text = "#";
             // 
             // txtGenre
             // 
@@ -285,6 +290,7 @@
             this.dataGridMovies.Name = "dataGridMovies";
             this.dataGridMovies.Size = new System.Drawing.Size(912, 452);
             this.dataGridMovies.TabIndex = 0;
+            this.dataGridMovies.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_CellClick);
             // 
             // lblGenre
             // 
@@ -451,6 +457,26 @@
             this.btnUpdateMovies.UseVisualStyleBackColor = true;
             this.btnUpdateMovies.Click += new System.EventHandler(this.btnUpdateMovies_Click);
             // 
+            // btnCustDelete
+            // 
+            this.btnCustDelete.Location = new System.Drawing.Point(485, 492);
+            this.btnCustDelete.Name = "btnCustDelete";
+            this.btnCustDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnCustDelete.TabIndex = 34;
+            this.btnCustDelete.Text = "Delete";
+            this.btnCustDelete.UseVisualStyleBackColor = true;
+            this.btnCustDelete.Click += new System.EventHandler(this.btnCustDelete_Click);
+            // 
+            // btnMovDelete
+            // 
+            this.btnMovDelete.Location = new System.Drawing.Point(687, 495);
+            this.btnMovDelete.Name = "btnMovDelete";
+            this.btnMovDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnMovDelete.TabIndex = 35;
+            this.btnMovDelete.Text = "Delete";
+            this.btnMovDelete.UseVisualStyleBackColor = true;
+            this.btnMovDelete.Click += new System.EventHandler(this.btnMovDelete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,6 +540,8 @@
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Button btnUpdateCustomer;
         private System.Windows.Forms.Button btnUpdateMovies;
+        private System.Windows.Forms.Button btnCustDelete;
+        private System.Windows.Forms.Button btnMovDelete;
     }
 }
 

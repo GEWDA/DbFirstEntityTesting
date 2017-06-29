@@ -25,7 +25,31 @@ namespace DbFirstEntityTesting
         //EVENTS
 
 
-
+        private void DataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0){return;}
+            DataGridView theSender = (DataGridView) sender;
+            var theRecord=theSender.Rows[e.RowIndex].Cells;
+            if (tpCustomers.Contains(theSender))
+            {
+                lblCustID.Text = theRecord[0].Value.ToString();
+                txtFirstName.Text = theRecord[1].Value.ToString();
+                txtSurname.Text = theRecord[2].Value.ToString();
+                txtAddress.Text = theRecord[3].Value.ToString();
+                txtPhone.Text = theRecord[4].Value.ToString();
+            }
+            else
+            {
+                lblMovieID.Text = theRecord[0].Value.ToString();
+                txtRating.Text = theRecord[1].Value.ToString();
+                txtTitle.Text = theRecord[2].Value.ToString();
+                txtYear.Text = theRecord[3].Value.ToString();
+                txtRental_Cost.Text = theRecord[4].Value.ToString();
+                txtCopies.Text = theRecord[0].Value.ToString();
+                txtPlot.Text = theRecord[1].Value.ToString();
+                txtGenre.Text = theRecord[2].Value.ToString();
+            }
+        }
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
         {
             if (txtSurname.Enabled)
@@ -56,7 +80,26 @@ namespace DbFirstEntityTesting
             }
             LoadMovies();
         }
-
+        private void btnCustDelete_Click(object sender, EventArgs e)
+        {
+            if (lblCustID.Text == "#") {return;}
+            if (MessageBox.Show(
+                    "Are you sure you wish to delete this customer record?\nThis will not impact already recorded sales",
+                    "Confirm Action", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                DeleteCustomer();
+            }
+        }
+        private void btnMovDelete_Click(object sender, EventArgs e)
+        {
+            if (lblMovieID.Text == "#") {return;}
+            if (MessageBox.Show(
+                    "Are you sure you wish to delete this movie record?\nThis will not impact already recorded sales",
+                    "Confirm Action", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                DeleteMovie();
+            }
+        }
 
 
         //METHODS
@@ -151,11 +194,11 @@ namespace DbFirstEntityTesting
         {
             try
             {
-                Convert.ToInt16(txtPhone.Text);
+                Convert.ToInt64(txtPhone.Text);
             }
             catch
             {
-                txtPhone.Text = null;
+                txtPhone.Text = null;//unlike UpdateMovie, I do not save the data from txtPhone, as it is the only field that can fail
             }
             foreach (var theTextBox in tpCustomers.Controls.OfType<TextBox>())
             {
@@ -175,24 +218,33 @@ namespace DbFirstEntityTesting
         }//todo: uncomment context.SaveChanges()
         private void UpdateMovie()
         {
+                var RCval = txtRental_Cost.Text;//saved due to temporary overwrite if the fields are formatted incorrectly
             try
             {
                 Convert.ToDecimal(txtRental_Cost.Text);
+                Convert.ToInt16(txtCopies.Text);
+                Convert.ToInt16(txtYear.Text);
             }
             catch
             {
-                txtRental_Cost.Text = null;
+
+                txtRental_Cost.Text = null;//I only need one field to be null for NullOrEmpty to trigger
             }
             foreach (var theTextBox in tpMovies.Controls.OfType<TextBox>())
             {
-                if (string.IsNullOrEmpty(theTextBox.Text)) { MessageBox.Show("Please fill in all fields appropriately"); return; }
+                if (string.IsNullOrEmpty(theTextBox.Text))
+                {
+                    txtRental_Cost.Text = RCval;
+                    MessageBox.Show("Please fill in all fields appropriately");
+                    return;
+                }
             }
             using (var context = new Entities())
             {
                 var movRecord = (from m in context.Movies
                     where (m.MovieID.ToString()==lblMovieID.Text)
                               select m).First();    //i will only be updating 1 record at a time, and two records can't have
-                movRecord.Title = txtTitle.Text;       //the same ID, so I will select the first (and the only) record I find
+                movRecord.Title = txtTitle.Text;       //the same ID, so I will select the first (which is also the only) record I find
                 movRecord.Rating = txtRating.Text;
                 movRecord.Year = txtYear.Text;
                 movRecord.Rental_Cost = Convert.ToDecimal(txtRental_Cost.Text);
@@ -202,8 +254,29 @@ namespace DbFirstEntityTesting
                 //context.SaveChanges();
             }
         }//todo: uncomment context.SaveChanges()
-
-
-
+        private void DeleteCustomer()
+        {
+            using (var context = new Entities())
+            {
+                var custDelete = (from c in context.Customer
+                    where (c.CustID.ToString() == lblCustID.Text)
+                    select c).First();
+                custDelete.IsDeleted = true;
+                //context.SaveChanges();
+            }
+            LoadCustomers();
+        }
+        private void DeleteMovie()
+        {
+            using (var context = new Entities())
+            {
+                var movDelete = (from m in context.Movies
+                    where (m.MovieID.ToString() == lblMovieID.Text)
+                    select m).First();
+                movDelete.IsDeleted = true;
+                //context.SaveChanges();
+            }
+            LoadMovies();
+        }
     }
 }
