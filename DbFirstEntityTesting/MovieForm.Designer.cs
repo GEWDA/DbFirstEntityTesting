@@ -1,6 +1,6 @@
 ﻿namespace DbFirstEntityTesting
 {
-    partial class Form4
+    partial class MovieForm
     {
         /// <summary>
         /// Required designer variable.

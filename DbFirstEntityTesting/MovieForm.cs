@@ -14,9 +14,9 @@ namespace DbFirstEntityTesting
     /// <summary>
     /// Movie form 
     /// </summary>
-    public partial class Form4 : Form
+    public partial class MovieForm : Form
     {
-        public Form4()
+        public MovieForm()
         {
             InitializeComponent();
         }

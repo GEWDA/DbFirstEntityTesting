@@ -14,9 +14,9 @@ namespace DbFirstEntityTesting
     /// <summary>
     /// Customer form
     /// </summary>
-    public partial class Form3 : Form
+    public partial class CustomerForm : Form
     {
-        public Form3()
+        public CustomerForm()
         {
             InitializeComponent();
         }

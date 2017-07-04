@@ -1,6 +1,6 @@
 ﻿namespace DbFirstEntityTesting
 {
-    partial class Form2
+    partial class RentForm
     {
         /// <summary>
         /// Required designer variable.

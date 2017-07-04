@@ -14,9 +14,9 @@ namespace DbFirstEntityTesting
     /// <summary>
     /// Main form
     /// </summary>
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -104,21 +104,21 @@ namespace DbFirstEntityTesting
         private void btnRent_Click(object sender, EventArgs e)
         {
             if(CurrentMovie is null) {MessageBox.Show("Please select a movie"); return; }
-            using (Form2 FormRent=new Form2(CurrentMovie))
+            using (RentForm FormRent=new RentForm(CurrentMovie))
             {
                 FormRent.ShowDialog();                
             }
         }
         private void btnNewCustomer_Click(object sender, EventArgs e)
         {
-            using (Form3 FormCustomer = new Form3())
+            using (CustomerForm FormCustomer = new CustomerForm())
             {
                 FormCustomer.ShowDialog();
             }
         }
         private void btnNewMovie_Click(object sender, EventArgs e)
         {
-            using (Form4 FormMovie = new Form4())
+            using (MovieForm FormMovie = new MovieForm())
             {
                 FormMovie.ShowDialog();
             }

@@ -14,9 +14,9 @@ namespace DbFirstEntityTesting
     /// <summary>
     /// Rent movie form
     /// </summary>
-    public partial class Form2 : Form
+    public partial class RentForm : Form
     {
-        public Form2(DataGridViewCellCollection aMovie)
+        public RentForm(DataGridViewCellCollection aMovie)
         {
             InitializeComponent();
             TheMovie = aMovie;
