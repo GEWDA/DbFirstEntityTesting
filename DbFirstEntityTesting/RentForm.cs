@@ -52,7 +52,7 @@ namespace DbFirstEntityTesting
             Close();
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        public void btnSearch_Click(object sender, EventArgs e)
         {
             using (var context = new Entities())
             {

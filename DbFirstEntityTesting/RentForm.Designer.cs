@@ -93,7 +93,7 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // Form2
+            // RentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -104,7 +104,7 @@
             this.Controls.Add(this.btnRentMovie);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.dataGridCustomers);
-            this.Name = "Form2";
+            this.Name = "RentForm";
             this.Text = "Form2";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCustomers)).EndInit();
             this.ResumeLayout(false);
@@ -113,12 +113,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridCustomers;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnRentMovie;
         private System.Windows.Forms.Label lblSearch;
-        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnCancel;
+        public System.Windows.Forms.TextBox txtSearch;
+        public System.Windows.Forms.Button btnSearch;
+        public System.Windows.Forms.DataGridView dataGridCustomers;
     }
 }

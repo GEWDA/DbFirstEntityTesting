@@ -21,7 +21,7 @@ namespace DbFirstEntityTesting
             InitializeComponent();
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        public void btnSubmit_Click(object sender, EventArgs e)
         {
             try
             {
