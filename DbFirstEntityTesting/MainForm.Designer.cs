@@ -515,6 +515,7 @@
             this.btnReturn.TabIndex = 39;
             this.btnReturn.Text = "Return Movie";
             this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // dataGridUnreturned
             // 
@@ -524,14 +525,14 @@
             this.dataGridUnreturned.Size = new System.Drawing.Size(912, 452);
             this.dataGridUnreturned.TabIndex = 0;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(938, 616);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
             this.Activated += new System.EventHandler(this.Form1_Activated);
             this.tabControl1.ResumeLayout(false);

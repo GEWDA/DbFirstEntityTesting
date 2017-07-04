@@ -21,11 +21,11 @@ namespace DbFirstEntityTesting
             InitializeComponent();
         }
         public DataGridViewCellCollection CurrentMovie { get; set; }
-
+        public DataGridViewCell UnreturnedMovie { get; set; }
         //EVENTS
 
 
-        private void DataGrid_CellClick(object sender, DataGridViewCellEventArgs e)//note that only the Customer and the Movies DataGrids call this event
+        private void DataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0){return;}
             DataGridView theSender = (DataGridView) sender;
@@ -38,7 +38,7 @@ namespace DbFirstEntityTesting
                 txtAddress.Text = theRecord[3].Value.ToString();
                 txtPhone.Text = theRecord[4].Value.ToString();
             }
-            else
+            else if(tpMovies.Contains(theSender))
             {
                 lblMovieID.Text = theRecord[0].FormattedValue=="" ? "":theRecord[0].Value.ToString();//due to some unusual formatting of data
                 txtRating.Text = theRecord[1].FormattedValue=="" ? "":theRecord[1].Value.ToString();//the Movies DataGrid must be checked for nulls.
@@ -50,6 +50,15 @@ namespace DbFirstEntityTesting
                 txtGenre.Text = theRecord[7].FormattedValue=="" ? "":theRecord[7].Value.ToString();
                 CurrentMovie = theRecord;//for renting movie
             }
+            else
+            {
+                UnreturnedMovie = theRecord[0];//in this case, I only need the ID
+            }
+        }
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            if (UnreturnedMovie is null) {MessageBox.Show("Please select a record");return ; }
+            UpdateUnreturned();
         }
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
         {
@@ -129,7 +138,9 @@ namespace DbFirstEntityTesting
         }
         //METHODS
 
-
+        /// <summary>
+        /// Calls all Load functions
+        /// </summary>
         private void LoadData()
         {
             LoadCustomers();
@@ -288,6 +299,19 @@ namespace DbFirstEntityTesting
                 context.SaveChanges();
             }
         }
+        private void UpdateUnreturned()
+        {
+            using (var context = new Entities())
+            {
+                var unreturned = (from u in context.RentedMovies
+                                 where (u.RMID.ToString() == UnreturnedMovie.Value.ToString())
+                                 select u).First();
+                unreturned.DateReturned=DateTime.Now;
+                context.SaveChanges();
+            }
+            LoadRentedMovies();
+            LoadUnreturned();
+        }
         private void DeleteCustomer()
         {
             using (var context = new Entities())
@@ -312,7 +336,5 @@ namespace DbFirstEntityTesting
             }
             LoadMovies();
         }
-
-
     }
 }
