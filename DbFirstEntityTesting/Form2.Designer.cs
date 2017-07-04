@@ -30,7 +30,7 @@
         {
             this.dataGridCustomers = new System.Windows.Forms.DataGridView();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnRentMovie = new System.Windows.Forms.Button();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -44,6 +44,7 @@
             this.dataGridCustomers.Name = "dataGridCustomers";
             this.dataGridCustomers.Size = new System.Drawing.Size(523, 794);
             this.dataGridCustomers.TabIndex = 1;
+            this.dataGridCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_CellClick);
             // 
             // btnSearch
             // 
@@ -55,14 +56,15 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // button2
+            // btnRentMovie
             // 
-            this.button2.Location = new System.Drawing.Point(541, 90);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Rent for This Customer";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnRentMovie.Location = new System.Drawing.Point(541, 90);
+            this.btnRentMovie.Name = "btnRentMovie";
+            this.btnRentMovie.Size = new System.Drawing.Size(131, 23);
+            this.btnRentMovie.TabIndex = 3;
+            this.btnRentMovie.Text = "Rent for This Customer";
+            this.btnRentMovie.UseVisualStyleBackColor = true;
+            this.btnRentMovie.Click += new System.EventHandler(this.btnRentMovie_Click);
             // 
             // lblSearch
             // 
@@ -99,7 +101,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblSearch);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnRentMovie);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.dataGridCustomers);
             this.Name = "Form2";
@@ -114,7 +116,7 @@
 
         private System.Windows.Forms.DataGridView dataGridCustomers;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRentMovie;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnCancel;

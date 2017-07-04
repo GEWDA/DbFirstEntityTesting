@@ -41,8 +41,7 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Cursor = System.Windows.Forms.Cursors.No;
-            this.txtPhone.Enabled = false;
+            this.txtPhone.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPhone.Location = new System.Drawing.Point(65, 84);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(103, 20);
@@ -77,8 +76,7 @@
             // 
             // txtSurname
             // 
-            this.txtSurname.Cursor = System.Windows.Forms.Cursors.No;
-            this.txtSurname.Enabled = false;
+            this.txtSurname.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSurname.Location = new System.Drawing.Point(65, 32);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(103, 20);
@@ -95,8 +93,7 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Cursor = System.Windows.Forms.Cursors.No;
-            this.txtAddress.Enabled = false;
+            this.txtAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAddress.Location = new System.Drawing.Point(65, 58);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(103, 20);
@@ -104,8 +101,7 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Cursor = System.Windows.Forms.Cursors.No;
-            this.txtFirstName.Enabled = false;
+            this.txtFirstName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtFirstName.Location = new System.Drawing.Point(65, 6);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(103, 20);
@@ -119,6 +115,7 @@
             this.btnSubmit.TabIndex = 41;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // Form3
             // 

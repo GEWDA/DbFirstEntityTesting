@@ -11,23 +11,21 @@ using DbFirstEntityTesting.Model;
 
 namespace DbFirstEntityTesting
 {
+    /// <summary>
+    /// Main form
+    /// </summary>
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
-
-            LoadData();
-
         }
-        public Form3 FormNewCustomer { get; set; }
-        public Form4 FormNewMovie { get; set; }
         public DataGridViewCellCollection CurrentMovie { get; set; }
 
         //EVENTS
 
 
-        private void DataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGrid_CellClick(object sender, DataGridViewCellEventArgs e)//note that only the Customer and the Movies DataGrids call this event
         {
             if (e.RowIndex < 0){return;}
             DataGridView theSender = (DataGridView) sender;
@@ -42,14 +40,14 @@ namespace DbFirstEntityTesting
             }
             else
             {
-                lblMovieID.Text = theRecord[0].Value.ToString();
-                txtRating.Text = theRecord[1].Value.ToString();
-                txtTitle.Text = theRecord[2].Value.ToString();
-                txtYear.Text = theRecord[3].Value.ToString();
-                txtRental_Cost.Text = theRecord[4].Value.ToString();
-                txtCopies.Text = theRecord[5].Value.ToString();
-                txtPlot.Text = theRecord[6].Value.ToString();
-                txtGenre.Text = theRecord[7].Value.ToString();
+                lblMovieID.Text = theRecord[0].FormattedValue=="" ? "":theRecord[0].Value.ToString();//due to some unusual formatting of data
+                txtRating.Text = theRecord[1].FormattedValue=="" ? "":theRecord[1].Value.ToString();//the Movies DataGrid must be checked for nulls.
+                txtTitle.Text = theRecord[2].FormattedValue=="" ? "":theRecord[2].Value.ToString();//This is due to some movies having no plot or genre.
+                txtYear.Text = theRecord[3].FormattedValue=="" ? "":theRecord[3].Value.ToString();//This also must be done 'manually' (i can't use a for each)
+                txtRental_Cost.Text = theRecord[4].FormattedValue=="" ? "":theRecord[4].Value.ToString();//due to the values stored in the data grid not actually changing
+                txtCopies.Text = theRecord[5].FormattedValue=="" ? "":theRecord[5].Value.ToString();
+                txtPlot.Text = theRecord[6].FormattedValue=="" ? "":theRecord[6].Value.ToString();
+                txtGenre.Text = theRecord[7].FormattedValue=="" ? "":theRecord[7].Value.ToString();
                 CurrentMovie = theRecord;//for renting movie
             }
         }
@@ -103,15 +101,35 @@ namespace DbFirstEntityTesting
                 DeleteMovie();
             }
         }
-
-
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+            if(CurrentMovie is null) {MessageBox.Show("Please select a movie"); return; }
+            using (Form2 FormRent=new Form2(CurrentMovie))
+            {
+                FormRent.ShowDialog();                
+            }
+        }
+        private void btnNewCustomer_Click(object sender, EventArgs e)
+        {
+            using (Form3 FormCustomer = new Form3())
+            {
+                FormCustomer.ShowDialog();
+            }
+        }
+        private void btnNewMovie_Click(object sender, EventArgs e)
+        {
+            using (Form4 FormMovie = new Form4())
+            {
+                FormMovie.ShowDialog();
+            }
+        }
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            LoadData();
+        }
         //METHODS
 
 
-        private void CreateMovie()
-        {
-            
-        }
         private void LoadData()
         {
             LoadCustomers();
@@ -234,7 +252,7 @@ namespace DbFirstEntityTesting
         }//todo: uncomment context.SaveChanges()
         private void UpdateMovie()
         {
-                var RCval = txtRental_Cost.Text;//saved due to temporary overwrite if the fields are formatted incorrectly
+            var RCval = txtRental_Cost.Text;//saved due to temporary overwrite if the fields are formatted incorrectly
             try
             {
                 Convert.ToDecimal(txtRental_Cost.Text);
@@ -295,13 +313,6 @@ namespace DbFirstEntityTesting
             LoadMovies();
         }//todo: uncomment context.SaveChanges()
 
-        private void btnRent_Click(object sender, EventArgs e)
-        {
-            using (Form2 FormRent=new Form2(CurrentMovie))
-            {
-                FormRent.ShowDialog();                
-            }
 
-        }
     }
 }

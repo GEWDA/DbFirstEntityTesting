@@ -11,12 +11,16 @@ using DbFirstEntityTesting.Model;
 
 namespace DbFirstEntityTesting
 {
+    /// <summary>
+    /// Rent movie form
+    /// </summary>
     public partial class Form2 : Form
     {
         public Form2(DataGridViewCellCollection aMovie)
         {
             InitializeComponent();
             TheMovie = aMovie;
+            TheCustomer = null;
             LoadDG();
         }
 
@@ -73,5 +77,21 @@ namespace DbFirstEntityTesting
             TheCustomer = theSender.Rows[e.RowIndex].Cells;
 
         }
+
+        private void btnRentMovie_Click(object sender, EventArgs e)
+        {
+            if(TheCustomer is null) {MessageBox.Show("Please select a customer"); return; }
+            RentedMovies newRentedMovie = new RentedMovies();
+            using (var context = new Entities())
+            {
+                newRentedMovie.MovieIDFK = Convert.ToInt32(TheMovie["MovieID"].Value);//turns out you can use the column names instead of numbers in a DGVCellCollection
+                newRentedMovie.CustIDFK = Convert.ToInt32(TheCustomer["CustID"].Value);
+                newRentedMovie.DateRented = DateTime.Now;
+                context.RentedMovies.Add(newRentedMovie);
+                //context.SaveChanges();
+            }
+            Close();
+
+        }//todo: uncomment context.SaveChanges()
     }
 }
