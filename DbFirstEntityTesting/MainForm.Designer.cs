@@ -524,6 +524,7 @@
             this.dataGridUnreturned.Name = "dataGridUnreturned";
             this.dataGridUnreturned.Size = new System.Drawing.Size(912, 452);
             this.dataGridUnreturned.TabIndex = 0;
+            this.dataGridUnreturned.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_CellClick);
             // 
             // MainForm
             // 
