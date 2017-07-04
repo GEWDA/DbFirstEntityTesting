@@ -88,10 +88,10 @@ namespace DbFirstEntityTesting
                 newRentedMovie.CustIDFK = Convert.ToInt32(TheCustomer["CustID"].Value);
                 newRentedMovie.DateRented = DateTime.Now;
                 context.RentedMovies.Add(newRentedMovie);
-                //context.SaveChanges();
+                context.SaveChanges();
             }
             Close();
 
-        }//todo: uncomment context.SaveChanges()
+        }
     }
 }

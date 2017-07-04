@@ -44,9 +44,9 @@ namespace DbFirstEntityTesting
                 newCustomer.LastName = txtSurname.Text;
                 newCustomer.IsDeleted = false;
                 context.Customer.Add(newCustomer);
-                //context.SaveChanges();
+                context.SaveChanges();
             }
             Close();
-        }//todo: uncomment context.SaveChanges()
+        }
     }
 }

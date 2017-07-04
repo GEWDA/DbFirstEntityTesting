@@ -37,10 +37,10 @@ namespace DbFirstEntityTesting
                 newMovie.Title = txtTitle.Text;
                 newMovie.Year = txtYear.Text;
                 context.Movies.Add(newMovie);
-                //context.SaveChanges();
+                context.SaveChanges();
             }
             Close();
-        }//todo: uncomment context.SaveChanges()
+        }
 
         private bool CheckValidity()
         {

@@ -247,9 +247,9 @@ namespace DbFirstEntityTesting
                 custRecord.LastName = txtSurname.Text;
                 custRecord.Address = txtAddress.Text;
                 custRecord.Phone = txtPhone.Text;
-                //context.SaveChanges();
+                context.SaveChanges();
             }
-        }//todo: uncomment context.SaveChanges()
+        }
         private void UpdateMovie()
         {
             var RCval = txtRental_Cost.Text;//saved due to temporary overwrite if the fields are formatted incorrectly
@@ -285,9 +285,9 @@ namespace DbFirstEntityTesting
                 movRecord.Copies = txtCopies.Text;
                 movRecord.Plot = txtPlot.Text;
                 movRecord.Genre = txtGenre.Text;
-                //context.SaveChanges();
+                context.SaveChanges();
             }
-        }//todo: uncomment context.SaveChanges()
+        }
         private void DeleteCustomer()
         {
             using (var context = new Entities())
@@ -296,10 +296,10 @@ namespace DbFirstEntityTesting
                     where (c.CustID.ToString() == lblCustID.Text)
                     select c).First();
                 custDelete.IsDeleted = true;
-                //context.SaveChanges();
+                context.SaveChanges();
             }
             LoadCustomers();
-        }//todo: uncomment context.SaveChanges()
+        }
         private void DeleteMovie()
         {
             using (var context = new Entities())
@@ -308,10 +308,10 @@ namespace DbFirstEntityTesting
                     where (m.MovieID.ToString() == lblMovieID.Text)
                     select m).First();
                 movDelete.IsDeleted = true;
-                //context.SaveChanges();
+                context.SaveChanges();
             }
             LoadMovies();
-        }//todo: uncomment context.SaveChanges()
+        }
 
 
     }
