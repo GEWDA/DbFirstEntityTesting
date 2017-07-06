@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DbFirstEntityTesting.Model;
+using DbFirstEntityTesting.Properties;
 
 namespace DbFirstEntityTesting
 {
@@ -20,11 +15,22 @@ namespace DbFirstEntityTesting
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// Stores a value that is passed to RentForm upon RentForm construction
+        /// </summary>
         public DataGridViewCellCollection CurrentMovie { get; set; }
+        /// <summary>
+        /// Stores the ID of an unreturned movie, allowing it to be returned from method UpdateUnreturned()
+        /// </summary>
+        /// <seealso cref="UpdateUnreturned()"/>
         public DataGridViewCell UnreturnedMovie { get; set; }
         //EVENTS
 
-
+        /// <summary>
+        /// Selects a record - and fills in textboxes - based on the row and DataGrid clicked by user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0){return;}
@@ -55,11 +61,24 @@ namespace DbFirstEntityTesting
                 UnreturnedMovie = theRecord[0];//in this case, I only need the ID
             }
         }
+        /// <summary>
+        /// Checks there is an unreturned movie selected, and then calls the UpdateUnreturned() method
+        /// </summary>
+        /// <seealso cref="UpdateUnreturned()"/>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            if (UnreturnedMovie is null) {MessageBox.Show("Please select a record");return ; }
+            if (UnreturnedMovie is null) {MessageBox.Show(Resources.select_movie);return ; }
             UpdateUnreturned();
         }
+        /// <summary>
+        /// Checks if the customer textboxes are enabled/editable. If they are, it calls the UpdateCustomer() method, toggles btnUpdateCustomer.Text, and disables the textboxes. 
+        /// Otherwise, it enables the textboxes and toggles btnUpdateCustomer.Text
+        /// </summary>
+        /// <remarks>Technically, this is both the 'edit' and the 'update' click event for btnUpdateCustomer</remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
         {
             if (txtSurname.Enabled)
@@ -75,6 +94,12 @@ namespace DbFirstEntityTesting
             }
             LoadCustomers();
         }
+        /// <summary>
+        /// Same as btnUpdateCustomer_Click, but replace references of 'customer' with 'movies'
+        /// </summary>
+        /// <see cref="btnUpdateCustomer_Click()"/>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUpdateMovies_Click(object sender, EventArgs e)
         {
             if (txtTitle.Enabled)
@@ -90,34 +115,53 @@ namespace DbFirstEntityTesting
             }
             LoadMovies();
         }
+        /// <summary>
+        /// If a customer is selected, and if the user confirms, calls the DeleteCustomer() method
+        /// </summary>
+        /// <seealso cref="DeleteCustomer()"/>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCustDelete_Click(object sender, EventArgs e)
         {
-            if (lblCustID.Text == "#") {return;}
+            if (lblCustID.Text == "#") {return;}//if no record has been selected
             if (MessageBox.Show(
-                    "Are you sure you wish to delete this customer record?\nThis will not impact already recorded sales",
+                    Resources.confirm_delete_start+"customer "+Resources.confirm_delete_end,
                     "Confirm Action", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
                 DeleteCustomer();
             }
         }
+        /// <see cref="btnCustDelete_Click()"/>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMovDelete_Click(object sender, EventArgs e)
         {
             if (lblMovieID.Text == "#") {return;}
             if (MessageBox.Show(
-                    "Are you sure you wish to delete this movie record?\nThis will not impact already recorded sales",
+                    Resources.confirm_delete_start+"movie "+Resources.confirm_delete_end,
                     "Confirm Action", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
                 DeleteMovie();
             }
         }
+        /// <summary>
+        /// If a movie is selected, opens the RentForm form and passes the selected movie to the constructor
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRent_Click(object sender, EventArgs e)
         {
-            if(CurrentMovie is null) {MessageBox.Show("Please select a movie"); return; }
+            if(CurrentMovie is null) {MessageBox.Show(Resources.select_movie); return; }
             using (RentForm FormRent=new RentForm(CurrentMovie))
             {
                 FormRent.ShowDialog();                
             }
         }
+        /// <summary>
+        /// opens the CustomerForm form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNewCustomer_Click(object sender, EventArgs e)
         {
             using (CustomerForm FormCustomer = new CustomerForm())
@@ -125,6 +169,11 @@ namespace DbFirstEntityTesting
                 FormCustomer.ShowDialog();
             }
         }
+        /// <summary>
+        /// Opens the MovieForm form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNewMovie_Click(object sender, EventArgs e)
         {
             using (MovieForm FormMovie = new MovieForm())
@@ -132,6 +181,12 @@ namespace DbFirstEntityTesting
                 FormMovie.ShowDialog();
             }
         }
+        /// <summary>
+        /// calls the LoadData() method
+        /// </summary>
+        /// <seealso cref="LoadData()"/>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_Activated(object sender, EventArgs e)
         {
             LoadData();
@@ -143,6 +198,8 @@ namespace DbFirstEntityTesting
         /// </summary>
         private void LoadData()
         {
+            lblCustID.Text = "#";
+            lblMovieID.Text = "#";
             LoadCustomers();
             LoadMovies();
             LoadRentedMovies();
@@ -155,6 +212,9 @@ namespace DbFirstEntityTesting
             dataGridRentedMovies.Columns[3].Width = 67;
             dataGridUnreturned.Columns[0].Width = 60;
         }
+        /// <summary>
+        /// Loads customer data into the customer DataGrid
+        /// </summary>
         private void LoadCustomers()
         {
             using (var context = new Entities())
@@ -173,6 +233,9 @@ namespace DbFirstEntityTesting
                 dataGridCustomers.DataSource = query.ToList();
             }
         }
+        /// <summary>
+        /// Loads movie data into the movies DataGrid
+        /// </summary>
         private void LoadMovies()
         {
             using (var context = new Entities())
@@ -194,6 +257,9 @@ namespace DbFirstEntityTesting
                 dataGridMovies.DataSource = query.ToList();
             }
         }
+        /// <summary>
+        /// Loads data into the rented movies DataGrid
+        /// </summary>
         private void LoadRentedMovies()
         {
             using (var context = new Entities())
@@ -214,6 +280,9 @@ namespace DbFirstEntityTesting
                 dataGridRentedMovies.DataSource = query.ToList();
             }
         }
+        /// <summary>
+        /// Loads data in to the unreturned DataGrid
+        /// </summary>
         private void LoadUnreturned()
         {
             using (var context = new Entities())
@@ -235,6 +304,9 @@ namespace DbFirstEntityTesting
                 dataGridUnreturned.DataSource = query.ToList();
             }
         }
+        /// <summary>
+        /// Checks if the data from the textboxes is valid. If true, updates selected customer, saves changes to the database, and reloads customers
+        /// </summary>
         private void UpdateCustomer()
         {
             try
@@ -247,7 +319,7 @@ namespace DbFirstEntityTesting
             }
             foreach (var theTextBox in tpCustomers.Controls.OfType<TextBox>())
             {
-                if (string.IsNullOrEmpty(theTextBox.Text)){MessageBox.Show("Please fill in all fields appropriately");return;}
+                if (string.IsNullOrEmpty(theTextBox.Text) || lblCustID.Text == "#") {MessageBox.Show(Resources.fields_invalid);return;}
             }
             using (var context = new Entities())
             {
@@ -261,6 +333,9 @@ namespace DbFirstEntityTesting
                 context.SaveChanges();
             }
         }
+        /// <summary>
+        /// Checks if the data from the textboxes is valid. If true, updates selected movie, saves changes to the database, and reloads movies
+        /// </summary>
         private void UpdateMovie()
         {
             var RCval = txtRental_Cost.Text;//saved due to temporary overwrite if the fields are formatted incorrectly
@@ -277,10 +352,10 @@ namespace DbFirstEntityTesting
             }
             foreach (var theTextBox in tpMovies.Controls.OfType<TextBox>())
             {
-                if (string.IsNullOrEmpty(theTextBox.Text))
+                if (string.IsNullOrEmpty(theTextBox.Text) || lblMovieID.Text == "#")
                 {
                     txtRental_Cost.Text = RCval;
-                    MessageBox.Show("Please fill in all fields appropriately");
+                    MessageBox.Show(Resources.fields_invalid);
                     return;
                 }
             }
@@ -299,6 +374,9 @@ namespace DbFirstEntityTesting
                 context.SaveChanges();
             }
         }
+        /// <summary>
+        /// Sets the date returned to now for the selected unreturned movie, saves changes to the database, and reloads rented movies and unreturned movies
+        /// </summary>
         private void UpdateUnreturned()
         {
             using (var context = new Entities())
@@ -312,6 +390,9 @@ namespace DbFirstEntityTesting
             LoadRentedMovies();
             LoadUnreturned();
         }
+        /// <summary>
+        /// Updates the selected customer's IsDeleted property to true, saves to database, and reloads the customers
+        /// </summary>
         private void DeleteCustomer()
         {
             using (var context = new Entities())
@@ -324,6 +405,9 @@ namespace DbFirstEntityTesting
             }
             LoadCustomers();
         }
+        /// <summary>
+        /// Updates the selected movie's IsDeleted property to true, saves to database, and reloads the movies
+        /// </summary>
         private void DeleteMovie()
         {
             using (var context = new Entities())

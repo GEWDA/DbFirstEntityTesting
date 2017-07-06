@@ -1,13 +1,8 @@
 ﻿using DbFirstEntityTesting.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DbFirstEntityTesting.Properties;
 
 namespace DbFirstEntityTesting
 {
@@ -20,12 +15,15 @@ namespace DbFirstEntityTesting
         {
             InitializeComponent();
         }
-
-        Movies newMovie = new Movies();
-
+        /// <summary>
+        /// Creates a new record in Movies table, saves changes to Database, and then closes the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (!CheckValidity()) {return; }
+            Movies newMovie = new Movies();
             using (var context = new Entities())
             {
                 newMovie.Copies = txtCopies.Text;
@@ -41,7 +39,10 @@ namespace DbFirstEntityTesting
             }
             Close();
         }
-
+        /// <summary>
+        /// Checks that all fields are filled in, and are the appropriate data type
+        /// </summary>
+        /// <returns>bool</returns>
         private bool CheckValidity()
         {
             var RCval = txtRental_Cost.Text;//saved due to temporary overwrite if the fields are formatted incorrectly
@@ -61,7 +62,7 @@ namespace DbFirstEntityTesting
                 if (string.IsNullOrEmpty(theTextBox.Text))
                 {
                     txtRental_Cost.Text = RCval;
-                    MessageBox.Show("Please fill in all fields appropriately");
+                    MessageBox.Show(Resources.fields_invalid);
                     return false;
                 }
             }

@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DbFirstEntityTesting.Model;
+using DbFirstEntityTesting.Properties;
 
 namespace DbFirstEntityTesting
 {
@@ -23,7 +18,9 @@ namespace DbFirstEntityTesting
             TheCustomer = null;
             LoadDG();
         }
-
+        /// <summary>
+        /// Loads customer DataGrid
+        /// </summary>
         private void LoadDG()
         {
             using (var context = new Entities())
@@ -43,15 +40,29 @@ namespace DbFirstEntityTesting
                 dataGridCustomers.Columns[0].Width = 60;
             }
         }
-
+        /// <summary>
+        /// The movie record passed in from Main Form
+        /// </summary>
+        /// <remarks>This should not be edited once form is initialized</remarks>
         public DataGridViewCellCollection TheMovie { get; set; }
+        /// <summary>
+        /// The customer selected by this form. This will start as null and will be edited
+        /// </summary>
         public DataGridViewCellCollection TheCustomer { get; set; }
-
+        /// <summary>
+        /// Closes form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
-
+        /// <summary>
+        /// Loads all records that contain at least one cell that contains the string from txtSearch.Text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void btnSearch_Click(object sender, EventArgs e)
         {
             using (var context = new Entities())
@@ -70,6 +81,11 @@ namespace DbFirstEntityTesting
                 dataGridCustomers.DataSource = query.ToList();
             }
         }
+        /// <summary>
+        /// Selects a record based on the row clicked by user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) { return; }
@@ -77,10 +93,14 @@ namespace DbFirstEntityTesting
             TheCustomer = theSender.Rows[e.RowIndex].Cells;
 
         }
-
+        /// <summary>
+        /// Creates a new record in RentedMovies table, saves changes to Database, and then closes the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRentMovie_Click(object sender, EventArgs e)
         {
-            if(TheCustomer is null) {MessageBox.Show("Please select a customer"); return; }
+            if(TheCustomer is null) {MessageBox.Show(Resources.select_customer); return; }
             RentedMovies newRentedMovie = new RentedMovies();
             using (var context = new Entities())
             {

@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DbFirstEntityTesting.Model;
+using DbFirstEntityTesting.Properties;
 
 namespace DbFirstEntityTesting
 {
@@ -20,7 +15,11 @@ namespace DbFirstEntityTesting
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Creates a new record in Customer table, saves changes to Database, and then closes the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void btnSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -29,11 +28,11 @@ namespace DbFirstEntityTesting
             }
             catch
             {
-                txtPhone.Text = null;//unlike UpdateMovie, I do not save the data from txtPhone, as it is the only field that can fail
+                txtPhone.Text = null;
             }
             foreach (var theTextBox in Controls.OfType<TextBox>())
             {
-                if (string.IsNullOrEmpty(theTextBox.Text)) { MessageBox.Show("Please fill in all fields appropriately"); return; }
+                if (string.IsNullOrEmpty(theTextBox.Text)) { MessageBox.Show(Resources.fields_invalid); return; }
             }
             Customer newCustomer = new Customer();
             using (var context = new Entities())
