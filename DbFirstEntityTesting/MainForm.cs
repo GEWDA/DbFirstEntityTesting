@@ -438,6 +438,7 @@ namespace DbFirstEntityTesting                      //BECAUSE MY FOURTH TABLE WO
         /// <summary>
         /// Checks if the data from the textboxes is valid. If true, updates selected movie, saves changes to the database, and reloads movies
         /// </summary>
+        /// <remarks>Contains a lambda</remarks>
         private void UpdateMovie()
         {
             var RCval = txtRental_Cost.Text;//saved due to temporary overwrite if the fields are formatted incorrectly
@@ -461,12 +462,10 @@ namespace DbFirstEntityTesting                      //BECAUSE MY FOURTH TABLE WO
                     return;
                 }
             }
-            using (var context = new Entities())
+            using (var context = new Entities())//obligatory lambda below
             {
-                var movRecord = (from m in context.Movies
-                    where (m.MovieID.ToString()==lblMovieID.Text)
-                              select m).First();    //i will only be updating 1 record at a time, and two records can't have
-                movRecord.Title = txtTitle.Text;       //the same ID, so I will select the first (which is also the only) record I find
+                var movRecord = context.Movies.First(m => m.MovieID.ToString() == lblMovieID.Text);//i will only be updating 1 record at a time, and two
+                movRecord.Title = txtTitle.Text;       //records can't have the same ID, so I will select the first (which is also the only) record I find
                 movRecord.Rating = txtRating.Text;
                 movRecord.Year = txtYear.Text;
                 movRecord.Rental_Cost = Convert.ToDecimal(txtRental_Cost.Text);
