@@ -174,7 +174,7 @@
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
-            // Form4
+            // MovieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -194,7 +194,8 @@
             this.Controls.Add(this.txtRating);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.txtYear);
-            this.Name = "Form4";
+            this.MinimizeBox = false;
+            this.Name = "MovieForm";
             this.Text = "New Movie...";
             this.ResumeLayout(false);
             this.PerformLayout();

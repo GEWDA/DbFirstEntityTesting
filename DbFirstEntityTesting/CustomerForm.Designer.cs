@@ -117,7 +117,7 @@
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
-            // Form3
+            // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,7 +131,8 @@
             this.Controls.Add(this.txtSurname);
             this.Controls.Add(this.lblSurname);
             this.Controls.Add(this.txtFirstName);
-            this.Name = "Form3";
+            this.MinimizeBox = false;
+            this.Name = "CustomerForm";
             this.Text = "Form3";
             this.ResumeLayout(false);
             this.PerformLayout();

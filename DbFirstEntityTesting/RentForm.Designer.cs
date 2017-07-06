@@ -104,6 +104,7 @@
             this.Controls.Add(this.btnRentMovie);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.dataGridCustomers);
+            this.MinimizeBox = false;
             this.Name = "RentForm";
             this.Text = "Form2";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCustomers)).EndInit();
