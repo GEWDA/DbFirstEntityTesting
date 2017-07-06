@@ -71,6 +71,18 @@
             this.tpUnreturned = new System.Windows.Forms.TabPage();
             this.btnReturn = new System.Windows.Forms.Button();
             this.dataGridUnreturned = new System.Windows.Forms.DataGridView();
+            this.custSearchBox = new System.Windows.Forms.GroupBox();
+            this.txtCustSearch = new System.Windows.Forms.TextBox();
+            this.btnCustSearch = new System.Windows.Forms.Button();
+            this.movieSearchBox = new System.Windows.Forms.GroupBox();
+            this.txtMovieSearch = new System.Windows.Forms.TextBox();
+            this.btnMovieSearch = new System.Windows.Forms.Button();
+            this.unreturnedSearchBox = new System.Windows.Forms.GroupBox();
+            this.txtUnreturnedSearch = new System.Windows.Forms.TextBox();
+            this.btnUnreturnedSearch = new System.Windows.Forms.Button();
+            this.rentedSearchBox = new System.Windows.Forms.GroupBox();
+            this.txtRentedSearch = new System.Windows.Forms.TextBox();
+            this.btnRentedSearch = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tpRented.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRentedMovies)).BeginInit();
@@ -80,6 +92,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMovies)).BeginInit();
             this.tpUnreturned.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUnreturned)).BeginInit();
+            this.custSearchBox.SuspendLayout();
+            this.movieSearchBox.SuspendLayout();
+            this.unreturnedSearchBox.SuspendLayout();
+            this.rentedSearchBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -92,17 +108,18 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(929, 549);
+            this.tabControl1.Size = new System.Drawing.Size(929, 607);
             this.tabControl1.TabIndex = 0;
             // 
             // tpRented
             // 
+            this.tpRented.Controls.Add(this.rentedSearchBox);
             this.tpRented.Controls.Add(this.dataGridRentedMovies);
             this.tpRented.Location = new System.Drawing.Point(4, 22);
             this.tpRented.Margin = new System.Windows.Forms.Padding(2);
             this.tpRented.Name = "tpRented";
             this.tpRented.Padding = new System.Windows.Forms.Padding(2);
-            this.tpRented.Size = new System.Drawing.Size(921, 523);
+            this.tpRented.Size = new System.Drawing.Size(921, 581);
             this.tpRented.TabIndex = 0;
             this.tpRented.Text = "Rented Movies";
             this.tpRented.UseVisualStyleBackColor = true;
@@ -117,6 +134,7 @@
             // 
             // tpCustomers
             // 
+            this.tpCustomers.Controls.Add(this.custSearchBox);
             this.tpCustomers.Controls.Add(this.btnNewCustomer);
             this.tpCustomers.Controls.Add(this.btnCustDelete);
             this.tpCustomers.Controls.Add(this.btnUpdateCustomer);
@@ -135,7 +153,7 @@
             this.tpCustomers.Margin = new System.Windows.Forms.Padding(2);
             this.tpCustomers.Name = "tpCustomers";
             this.tpCustomers.Padding = new System.Windows.Forms.Padding(2);
-            this.tpCustomers.Size = new System.Drawing.Size(921, 523);
+            this.tpCustomers.Size = new System.Drawing.Size(921, 581);
             this.tpCustomers.TabIndex = 1;
             this.tpCustomers.Text = "Customers";
             this.tpCustomers.UseVisualStyleBackColor = true;
@@ -272,6 +290,7 @@
             // 
             // tpMovies
             // 
+            this.tpMovies.Controls.Add(this.movieSearchBox);
             this.tpMovies.Controls.Add(this.btnRent);
             this.tpMovies.Controls.Add(this.btnNewMovie);
             this.tpMovies.Controls.Add(this.btnMovDelete);
@@ -296,7 +315,7 @@
             this.tpMovies.Location = new System.Drawing.Point(4, 22);
             this.tpMovies.Margin = new System.Windows.Forms.Padding(2);
             this.tpMovies.Name = "tpMovies";
-            this.tpMovies.Size = new System.Drawing.Size(921, 523);
+            this.tpMovies.Size = new System.Drawing.Size(921, 581);
             this.tpMovies.TabIndex = 2;
             this.tpMovies.Text = "Movies";
             this.tpMovies.UseVisualStyleBackColor = true;
@@ -497,12 +516,13 @@
             // 
             // tpUnreturned
             // 
+            this.tpUnreturned.Controls.Add(this.unreturnedSearchBox);
             this.tpUnreturned.Controls.Add(this.btnReturn);
             this.tpUnreturned.Controls.Add(this.dataGridUnreturned);
             this.tpUnreturned.Location = new System.Drawing.Point(4, 22);
             this.tpUnreturned.Margin = new System.Windows.Forms.Padding(2);
             this.tpUnreturned.Name = "tpUnreturned";
-            this.tpUnreturned.Size = new System.Drawing.Size(921, 523);
+            this.tpUnreturned.Size = new System.Drawing.Size(921, 581);
             this.tpUnreturned.TabIndex = 3;
             this.tpUnreturned.Text = "Unreturned Movies";
             this.tpUnreturned.UseVisualStyleBackColor = true;
@@ -526,6 +546,118 @@
             this.dataGridUnreturned.TabIndex = 0;
             this.dataGridUnreturned.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_CellClick);
             // 
+            // custSearchBox
+            // 
+            this.custSearchBox.Controls.Add(this.txtCustSearch);
+            this.custSearchBox.Controls.Add(this.btnCustSearch);
+            this.custSearchBox.Location = new System.Drawing.Point(13, 518);
+            this.custSearchBox.Name = "custSearchBox";
+            this.custSearchBox.Size = new System.Drawing.Size(221, 54);
+            this.custSearchBox.TabIndex = 39;
+            this.custSearchBox.TabStop = false;
+            this.custSearchBox.Text = "Search";
+            // 
+            // txtCustSearch
+            // 
+            this.txtCustSearch.Location = new System.Drawing.Point(9, 19);
+            this.txtCustSearch.Name = "txtCustSearch";
+            this.txtCustSearch.Size = new System.Drawing.Size(131, 20);
+            this.txtCustSearch.TabIndex = 7;
+            // 
+            // btnCustSearch
+            // 
+            this.btnCustSearch.Location = new System.Drawing.Point(149, 17);
+            this.btnCustSearch.Name = "btnCustSearch";
+            this.btnCustSearch.Size = new System.Drawing.Size(64, 23);
+            this.btnCustSearch.TabIndex = 6;
+            this.btnCustSearch.Text = "Search";
+            this.btnCustSearch.UseVisualStyleBackColor = true;
+            this.btnCustSearch.Click += new System.EventHandler(this.btnCustSearch_Click);
+            // 
+            // movieSearchBox
+            // 
+            this.movieSearchBox.Controls.Add(this.txtMovieSearch);
+            this.movieSearchBox.Controls.Add(this.btnMovieSearch);
+            this.movieSearchBox.Location = new System.Drawing.Point(13, 521);
+            this.movieSearchBox.Name = "movieSearchBox";
+            this.movieSearchBox.Size = new System.Drawing.Size(221, 54);
+            this.movieSearchBox.TabIndex = 40;
+            this.movieSearchBox.TabStop = false;
+            this.movieSearchBox.Text = "Search";
+            // 
+            // txtMovieSearch
+            // 
+            this.txtMovieSearch.Location = new System.Drawing.Point(9, 19);
+            this.txtMovieSearch.Name = "txtMovieSearch";
+            this.txtMovieSearch.Size = new System.Drawing.Size(131, 20);
+            this.txtMovieSearch.TabIndex = 7;
+            // 
+            // btnMovieSearch
+            // 
+            this.btnMovieSearch.Location = new System.Drawing.Point(149, 17);
+            this.btnMovieSearch.Name = "btnMovieSearch";
+            this.btnMovieSearch.Size = new System.Drawing.Size(64, 23);
+            this.btnMovieSearch.TabIndex = 6;
+            this.btnMovieSearch.Text = "Search";
+            this.btnMovieSearch.UseVisualStyleBackColor = true;
+            this.btnMovieSearch.Click += new System.EventHandler(this.btnMovieSearch_Click);
+            // 
+            // unreturnedSearchBox
+            // 
+            this.unreturnedSearchBox.Controls.Add(this.txtUnreturnedSearch);
+            this.unreturnedSearchBox.Controls.Add(this.btnUnreturnedSearch);
+            this.unreturnedSearchBox.Location = new System.Drawing.Point(6, 464);
+            this.unreturnedSearchBox.Name = "unreturnedSearchBox";
+            this.unreturnedSearchBox.Size = new System.Drawing.Size(221, 54);
+            this.unreturnedSearchBox.TabIndex = 40;
+            this.unreturnedSearchBox.TabStop = false;
+            this.unreturnedSearchBox.Text = "Search";
+            // 
+            // txtUnreturnedSearch
+            // 
+            this.txtUnreturnedSearch.Location = new System.Drawing.Point(9, 19);
+            this.txtUnreturnedSearch.Name = "txtUnreturnedSearch";
+            this.txtUnreturnedSearch.Size = new System.Drawing.Size(131, 20);
+            this.txtUnreturnedSearch.TabIndex = 7;
+            // 
+            // btnUnreturnedSearch
+            // 
+            this.btnUnreturnedSearch.Location = new System.Drawing.Point(149, 17);
+            this.btnUnreturnedSearch.Name = "btnUnreturnedSearch";
+            this.btnUnreturnedSearch.Size = new System.Drawing.Size(64, 23);
+            this.btnUnreturnedSearch.TabIndex = 6;
+            this.btnUnreturnedSearch.Text = "Search";
+            this.btnUnreturnedSearch.UseVisualStyleBackColor = true;
+            this.btnUnreturnedSearch.Click += new System.EventHandler(this.btnUnreturnedSearch_Click);
+            // 
+            // rentedSearchBox
+            // 
+            this.rentedSearchBox.Controls.Add(this.txtRentedSearch);
+            this.rentedSearchBox.Controls.Add(this.btnRentedSearch);
+            this.rentedSearchBox.Location = new System.Drawing.Point(8, 464);
+            this.rentedSearchBox.Name = "rentedSearchBox";
+            this.rentedSearchBox.Size = new System.Drawing.Size(221, 54);
+            this.rentedSearchBox.TabIndex = 40;
+            this.rentedSearchBox.TabStop = false;
+            this.rentedSearchBox.Text = "Search";
+            // 
+            // txtRentedSearch
+            // 
+            this.txtRentedSearch.Location = new System.Drawing.Point(9, 19);
+            this.txtRentedSearch.Name = "txtRentedSearch";
+            this.txtRentedSearch.Size = new System.Drawing.Size(131, 20);
+            this.txtRentedSearch.TabIndex = 7;
+            // 
+            // btnRentedSearch
+            // 
+            this.btnRentedSearch.Location = new System.Drawing.Point(149, 17);
+            this.btnRentedSearch.Name = "btnRentedSearch";
+            this.btnRentedSearch.Size = new System.Drawing.Size(64, 23);
+            this.btnRentedSearch.TabIndex = 6;
+            this.btnRentedSearch.Text = "Search";
+            this.btnRentedSearch.UseVisualStyleBackColor = true;
+            this.btnRentedSearch.Click += new System.EventHandler(this.btnRentedSearch_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -547,6 +679,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMovies)).EndInit();
             this.tpUnreturned.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUnreturned)).EndInit();
+            this.custSearchBox.ResumeLayout(false);
+            this.custSearchBox.PerformLayout();
+            this.movieSearchBox.ResumeLayout(false);
+            this.movieSearchBox.PerformLayout();
+            this.unreturnedSearchBox.ResumeLayout(false);
+            this.unreturnedSearchBox.PerformLayout();
+            this.rentedSearchBox.ResumeLayout(false);
+            this.rentedSearchBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -596,6 +736,18 @@
         private System.Windows.Forms.Button btnRent;
         private System.Windows.Forms.Button btnNewMovie;
         private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.GroupBox custSearchBox;
+        public System.Windows.Forms.TextBox txtCustSearch;
+        public System.Windows.Forms.Button btnCustSearch;
+        private System.Windows.Forms.GroupBox movieSearchBox;
+        public System.Windows.Forms.TextBox txtMovieSearch;
+        public System.Windows.Forms.Button btnMovieSearch;
+        private System.Windows.Forms.GroupBox rentedSearchBox;
+        public System.Windows.Forms.TextBox txtRentedSearch;
+        public System.Windows.Forms.Button btnRentedSearch;
+        private System.Windows.Forms.GroupBox unreturnedSearchBox;
+        public System.Windows.Forms.TextBox txtUnreturnedSearch;
+        public System.Windows.Forms.Button btnUnreturnedSearch;
     }
 }
 

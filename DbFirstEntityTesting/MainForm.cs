@@ -3,8 +3,8 @@ using System.Linq;
 using System.Windows.Forms;
 using DbFirstEntityTesting.Model;
 using DbFirstEntityTesting.Properties;
-
-namespace DbFirstEntityTesting
+                                                    //REMINDER: I RECIEVED PERMISSION TO USE 3 TABLES AND A VIEW
+namespace DbFirstEntityTesting                      //BECAUSE MY FOURTH TABLE WOULD BE 'IDENTICAL' TO THE VIEW
 {
     /// <summary>
     /// Main form
@@ -181,6 +181,108 @@ namespace DbFirstEntityTesting
                 FormMovie.ShowDialog();
             }
         }
+        /// <summary>
+        /// Loads all records that contain at least one cell that contains the string from txtRentedSearch.Text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void btnRentedSearch_Click(object sender, EventArgs e)
+        {
+            using (var context = new Entities())
+            {
+                var query = from r in context.RentedMovies
+                    where (r.RMID.ToString().Contains(txtRentedSearch.Text) || r.MovieIDFK.ToString().Contains(txtRentedSearch.Text) || r.Movies.Title.Contains(txtRentedSearch.Text) || r.CustIDFK.ToString().Contains(txtRentedSearch.Text) || r.Customer.FirstName.Contains(txtRentedSearch.Text) || r.Customer.LastName.Contains(txtRentedSearch.Text) || r.DateRented.ToString().Contains(txtRentedSearch.Text) || r.DateReturned.ToString().Contains(txtRentedSearch.Text))
+                    select new
+                    {
+                        r.RMID,
+                        r.MovieIDFK,
+                        r.Movies.Title,
+                        r.CustIDFK,
+                        r.Customer.FirstName,
+                        r.Customer.LastName,
+                        r.DateRented,
+                        r.DateReturned
+                    };
+
+                dataGridRentedMovies.DataSource = query.ToList();
+            }
+        }
+        /// <summary>
+        /// Loads all records that contain at least one cell that contains the string from txtCustSearch.Text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void btnCustSearch_Click(object sender, EventArgs e)
+        {
+            using (var context = new Entities())
+            {
+                var query = from c in context.Customer
+                    where (!c.IsDeleted && (c.CustID.ToString().Contains(txtCustSearch.Text) || c.FirstName.Contains(txtCustSearch.Text) || c.LastName.Contains(txtCustSearch.Text) || c.Address.Contains(txtCustSearch.Text) || c.Phone.Contains(txtCustSearch.Text)))
+                    select new
+                    {
+                        c.CustID,
+                        c.FirstName,
+                        c.LastName,
+                        c.Address,
+                        c.Phone,
+                    };
+
+                dataGridCustomers.DataSource = query.ToList();
+            }
+        }
+        /// <summary>
+        /// Loads all records that contain at least one cell that contains the string from txtMovieSearch.Text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void btnMovieSearch_Click(object sender, EventArgs e)
+        {
+            using (var context = new Entities())
+            {
+                var query = from m in context.Movies
+                    where (!m.IsDeleted && (m.MovieID.ToString().Contains(txtMovieSearch.Text) || m.Rating.Contains(txtMovieSearch.Text) || m.Title.Contains(txtMovieSearch.Text) || m.Year.Contains(txtMovieSearch.Text) || m.Rental_Cost.ToString().Contains(txtMovieSearch.Text) || m.Copies.Contains(txtMovieSearch.Text) || m.Plot.Contains(txtMovieSearch.Text) || m.Genre.Contains(txtMovieSearch.Text)))
+                    select new
+                    {
+                        m.MovieID,
+                        m.Rating,
+                        m.Title,
+                        m.Year,
+                        m.Rental_Cost,
+                        m.Copies,
+                        m.Plot,
+                        m.Genre,
+                    };
+
+                dataGridMovies.DataSource = query.ToList();
+            }
+        }
+        /// <summary>
+        /// Loads all records that contain at least one cell that contains the string from txtUnreturnedSearch.Text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void btnUnreturnedSearch_Click(object sender, EventArgs e)
+        {
+            using (var context = new Entities())
+            {
+                var query = from u in context.CustomerAndMoviesRented
+                    where (u.DateReturned==null && (u.RMID.ToString().Contains(txtUnreturnedSearch.Text) || u.FirstName.Contains(txtUnreturnedSearch.Text) || u.LastName.Contains(txtUnreturnedSearch.Text) || u.DateRented.ToString().Contains(txtUnreturnedSearch.Text) || u.Rental_Cost.ToString().Contains(txtUnreturnedSearch.Text) || u.Address.Contains(txtUnreturnedSearch.Text) || u.Title.Contains(txtUnreturnedSearch.Text)))
+                    select new
+                    {
+                        u.RMID,
+                        u.FirstName,
+                        u.LastName,
+                        u.Address,
+                        u.Title,
+                        u.Rental_Cost,
+                        u.DateRented,
+                        u.DateReturned//will be null
+                    };
+
+                dataGridUnreturned.DataSource = query.ToList();
+            }
+        }
+
         /// <summary>
         /// calls the LoadData() method
         /// </summary>
